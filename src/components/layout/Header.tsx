@@ -56,7 +56,7 @@ export default function SiteHeader({ header, locale }: HeaderProps) {
               alt={header.logo.alt ?? 'MKN'}
               width={56}
               height={40}
-              className="h-10 w-auto object-contain"
+              className="h-20 w-auto object-contain"
             />
           ) : (
             <span className="font-display text-white text-xl tracking-widest">
@@ -70,7 +70,7 @@ export default function SiteHeader({ header, locale }: HeaderProps) {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={`/${locale}${link.href}`}
               className="text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors"
               target={link.isExternal ? '_blank' : undefined}
             >

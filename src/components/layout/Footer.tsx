@@ -44,7 +44,7 @@ export default function SiteFooter({ footer, locale }: FooterProps) {
               {(col.links ?? []).map((link: any, j: number) => (
                 <li key={j}>
                   <Link
-                    href={link.href}
+                    href={`/${locale}${link.href}`}
                     className="hover:text-tan transition-colors"
                   >
                     {link.label}
