@@ -25,6 +25,7 @@ export const pageBySlugQuery = `
     _type == "heroVideo" => {
       _key,
       _type,
+      heroVariant,
       eyebrow,
       heading,
       subheading,
@@ -46,8 +47,34 @@ export const pageBySlugQuery = `
         "image": image { "url": asset->url, alt }
       }
     },
-    _type == "numbers" => { _key, _type, label, stats, background, showCtas, primaryCta, secondaryCta },
-    _type == "marquee" => { _key, _type, items, speed, background },
+    _type == "numbers" => {
+      _key,
+      _type,
+      label,
+      statsHeading,
+      showIntroPills,
+      pillMissionLabel,
+      pillVisionLabel,
+      pillMissionAnchor,
+      pillVisionAnchor,
+      showPlayCircle,
+      playCircleHref,
+      stats,
+      background,
+      showCtas,
+      primaryCta,
+      secondaryCta
+    },
+    _type == "marquee" => {
+      _key,
+      _type,
+      layout,
+      bannerText,
+      bannerImage { "url": asset->url, alt },
+      items,
+      speed,
+      background
+    },
     _type == "featuredProject" => {
       _key,
       _type,
@@ -83,6 +110,7 @@ export const pageBySlugQuery = `
     _type == "aboutSnippet" => {
       _key,
       _type,
+      introLayout,
       sectionLabel,
       heading,
       body,
@@ -117,6 +145,7 @@ export const pageBySlugQuery = `
       cards[]{
         label,
         heading,
+        anchorId,
         body,
         imagePosition,
         image { "url": asset->url, alt }
@@ -163,6 +192,7 @@ export const projectBySlugQuery = `
     _type == "heroVideo" => {
       _key,
       _type,
+      heroVariant,
       eyebrow,
       heading,
       subheading,

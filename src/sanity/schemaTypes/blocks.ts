@@ -39,6 +39,19 @@ export const heroVideoBlock = defineType({
     defineField({ name: 'subheading', type: 'localeText' }),
     ...ctaPair(),
     defineField({ name: 'overlayOpacity', type: 'number', initialValue: 50, validation: (r) => r.min(0).max(100) }),
+    defineField({
+      name: 'heroVariant',
+      title: 'Layout',
+      type: 'string',
+      initialValue: 'home',
+      options: {
+        list: [
+          { title: 'Large hero (home)', value: 'home' },
+          { title: 'About page (image-led, grayscale)', value: 'about' },
+        ],
+        layout: 'radio',
+      },
+    }),
   ],
 })
 
@@ -102,6 +115,45 @@ export const numbersBlock = defineType({
   fields: [
     defineField({ name: 'label', type: 'localeString' }),
     defineField({
+      name: 'statsHeading',
+      title: 'Section heading',
+      type: 'localeString',
+      description: 'Shown large on the right (e.g. OUR NUMBERS)',
+    }),
+    defineField({ name: 'showIntroPills', title: 'Mission / vision pills', type: 'boolean', initialValue: false }),
+    defineField({
+      name: 'pillMissionLabel',
+      type: 'localeString',
+      hidden: ({ parent }) => !parent?.showIntroPills,
+    }),
+    defineField({
+      name: 'pillVisionLabel',
+      type: 'localeString',
+      hidden: ({ parent }) => !parent?.showIntroPills,
+    }),
+    defineField({
+      name: 'pillMissionAnchor',
+      title: 'Mission pill jumps to',
+      type: 'string',
+      description: 'Anchor without #, must match a Mission card anchor ID',
+      hidden: ({ parent }) => !parent?.showIntroPills,
+    }),
+    defineField({
+      name: 'pillVisionAnchor',
+      title: 'Vision pill jumps to',
+      type: 'string',
+      description: 'Anchor without #',
+      hidden: ({ parent }) => !parent?.showIntroPills,
+    }),
+    defineField({ name: 'showPlayCircle', title: 'Show play circle', type: 'boolean', initialValue: false }),
+    defineField({
+      name: 'playCircleHref',
+      title: 'Play circle link',
+      type: 'string',
+      description: 'Hash link e.g. #our-vision',
+      hidden: ({ parent }) => !parent?.showPlayCircle,
+    }),
+    defineField({
       name: 'stats',
       type: 'array',
       of: [
@@ -127,8 +179,42 @@ export const marqueeBlock = defineType({
   type: 'object',
   fields: [
     defineField({
+      name: 'layout',
+      title: 'Display',
+      type: 'string',
+      initialValue: 'ticker',
+      options: {
+        list: [
+          { title: 'Scrolling ticker', value: 'ticker' },
+          { title: 'Full-width image banner', value: 'banner' },
+        ],
+        layout: 'radio',
+      },
+    }),
+    defineField({
+      name: 'bannerImage',
+      title: 'Banner background',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [{ name: 'alt', type: 'string' }],
+      hidden: ({ parent }) => parent?.layout !== 'banner',
+    }),
+    defineField({
+      name: 'bannerText',
+      title: 'Banner headline',
+      type: 'localeString',
+      hidden: ({ parent }) => parent?.layout !== 'banner',
+    }),
+    defineField({
       name: 'items',
       type: 'array',
+      hidden: ({ parent }) => parent?.layout === 'banner',
+      validation: (rule) =>
+        rule.custom((items, context) => {
+          const layout = (context.parent as { layout?: string } | undefined)?.layout
+          if (layout === 'banner') return true
+          return Array.isArray(items) && items.length > 0 ? true : 'Add at least one ticker item'
+        }),
       of: [
         {
           type: 'object',
@@ -136,8 +222,14 @@ export const marqueeBlock = defineType({
         },
       ],
     }),
-    defineField({ name: 'speed', type: 'string', options: { list: ['slow', 'medium', 'fast'] }, initialValue: 'medium' }),
-    defineField({ name: 'background', type: 'string', options: { list: ['dark', 'tan', 'white'] }, initialValue: 'dark' }),
+    defineField({ name: 'speed', type: 'string', options: { list: ['slow', 'medium', 'fast'] }, initialValue: 'medium', hidden: ({ parent }) => parent?.layout === 'banner' }),
+    defineField({
+      name: 'background',
+      type: 'string',
+      options: { list: ['dark', 'tan', 'white'] },
+      initialValue: 'dark',
+      hidden: ({ parent }) => parent?.layout === 'banner',
+    }),
   ],
 })
 
@@ -240,6 +332,19 @@ export const aboutSnippetBlock = defineType({
     }),
     ...ctaPair(),
     defineField({ name: 'imagePosition', type: 'string', options: { list: ['right', 'left'] }, initialValue: 'right' }),
+    defineField({
+      name: 'introLayout',
+      title: 'Layout',
+      type: 'string',
+      initialValue: 'split',
+      options: {
+        list: [
+          { title: 'Image beside text', value: 'split' },
+          { title: 'About intro (labels column + copy)', value: 'aboutIntro' },
+        ],
+        layout: 'radio',
+      },
+    }),
   ],
 })
 
@@ -319,7 +424,13 @@ export const missionVisionBlock = defineType({
           fields: [
             defineField({ name: 'label', type: 'localeString', validation: (r) => r.required() }),
             defineField({ name: 'heading', type: 'localeString', validation: (r) => r.required() }),
-            defineField({ name: 'body', type: 'localeText' }),
+            defineField({
+              name: 'anchorId',
+              title: 'Anchor ID',
+              type: 'string',
+              description: 'URL fragment without # (for in-page links)',
+            }),
+            defineField({ name: 'body', type: 'localePortableText' }),
             defineField({
               name: 'image',
               type: 'image',
