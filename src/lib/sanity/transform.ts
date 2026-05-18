@@ -59,6 +59,14 @@ export function normalizeBlocks(blocks: unknown[] | undefined | null, locale: st
       next.project = { ...deepPickLocale(p, locale), id: p._id ?? p.id, slug: p.slug }
     }
 
+    if (b._type === 'projectShowcase' && Array.isArray(next.selectedProjects)) {
+      next.selectedProjects = next.selectedProjects.map((p: Record<string, unknown>) => ({
+        ...deepPickLocale(p, locale),
+        id: p._id ?? p.id,
+        slug: p.slug,
+      }))
+    }
+
     return next
   })
 }

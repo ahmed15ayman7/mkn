@@ -7,8 +7,7 @@
     "dev": "next dev --webpack --no-server-fast-refresh",
     "lint": "next lint",
     "start": "next start",
-    "sanity": "sanity",
-    "seed:about": "node --env-file=.env scripts/seed-about-page.mjs"
+    "sanity": "sanity"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.0",
@@ -33,7 +32,6 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
-    "@sanity/client": "^7.22.0",
     "@sanity/vision": "^3.68.0",
     "@tailwindcss/postcss": "^4.1.6",
     "@types/node": "^22",

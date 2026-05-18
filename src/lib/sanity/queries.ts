@@ -25,11 +25,11 @@ export const pageBySlugQuery = `
     _type == "heroVideo" => {
       _key,
       _type,
-      heroVariant,
       eyebrow,
       heading,
       subheading,
       overlayOpacity,
+      variant,
       primaryCta,
       secondaryCta,
       backgroundVideo { "url": asset->url },
@@ -47,34 +47,8 @@ export const pageBySlugQuery = `
         "image": image { "url": asset->url, alt }
       }
     },
-    _type == "numbers" => {
-      _key,
-      _type,
-      label,
-      statsHeading,
-      showIntroPills,
-      pillMissionLabel,
-      pillVisionLabel,
-      pillMissionAnchor,
-      pillVisionAnchor,
-      showPlayCircle,
-      playCircleHref,
-      stats,
-      background,
-      showCtas,
-      primaryCta,
-      secondaryCta
-    },
-    _type == "marquee" => {
-      _key,
-      _type,
-      layout,
-      bannerText,
-      bannerImage { "url": asset->url, alt },
-      items,
-      speed,
-      background
-    },
+    _type == "numbers" => { _key, _type, label, stats, background, showCtas, primaryCta, secondaryCta },
+    _type == "marquee" => { _key, _type, items, speed, background },
     _type == "featuredProject" => {
       _key,
       _type,
@@ -102,6 +76,8 @@ export const pageBySlugQuery = `
       _type,
       heading,
       subheading,
+      eyebrow,
+      layout,
       primaryCta,
       secondaryCta,
       background,
@@ -110,14 +86,36 @@ export const pageBySlugQuery = `
     _type == "aboutSnippet" => {
       _key,
       _type,
-      introLayout,
+      variant,
+      background,
       sectionLabel,
       heading,
       body,
       primaryCta,
       secondaryCta,
       imagePosition,
-      image { "url": asset->url, alt }
+      image { "url": asset->url, alt },
+      galleryImages[]{ "url": asset->url, alt }
+    },
+    _type == "contactInfo" => {
+      _key,
+      _type,
+      useSiteFooter,
+      getInTouchHeading,
+      phones,
+      workingHours,
+      headOfficeHeading,
+      address,
+      directionsLabel,
+      directionsUrl,
+      socialHeading
+    },
+    _type == "projectShowcase" => {
+      _key,
+      _type,
+      displayMode,
+      limit,
+      "selectedProjects": selectedProjects[]->${projectExpand}
     },
     _type == "projectsGrid" => {
       _key,
@@ -142,10 +140,10 @@ export const pageBySlugQuery = `
     _type == "missionVision" => {
       _key,
       _type,
+      frameStyle,
       cards[]{
         label,
         heading,
-        anchorId,
         body,
         imagePosition,
         image { "url": asset->url, alt }
@@ -192,11 +190,11 @@ export const projectBySlugQuery = `
     _type == "heroVideo" => {
       _key,
       _type,
-      heroVariant,
       eyebrow,
       heading,
       subheading,
       overlayOpacity,
+      variant,
       primaryCta,
       secondaryCta,
       backgroundVideo { "url": asset->url },
@@ -228,11 +226,28 @@ export const projectBySlugQuery = `
       _type,
       heading,
       subheading,
+      eyebrow,
+      layout,
       primaryCta,
       secondaryCta,
       background,
       backgroundImage { "url": asset->url, alt }
     },
+    _type == "aboutSnippet" => {
+      _key,
+      _type,
+      variant,
+      background,
+      sectionLabel,
+      heading,
+      body,
+      primaryCta,
+      secondaryCta,
+      imagePosition,
+      image { "url": asset->url, alt },
+      galleryImages[]{ "url": asset->url, alt }
+    },
+    _type == "marquee" => { _key, _type, items, speed, background },
     _type == "units" => {
       _key,
       _type,

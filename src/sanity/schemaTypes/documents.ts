@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { pageBlockMembers, projectBlockMembers } from './blocks'
+import { getPageBlockMembers, pageBlockMembers, projectBlockMembers } from './blocks'
 import { seoImageField } from './locale'
 
 const projectDetailsFields = [
@@ -43,7 +43,27 @@ export const pageType = defineType({
       initialValue: 'published',
       validation: (r) => r.required(),
     }),
-    defineField({ name: 'blocks', type: 'array', of: pageBlockMembers }),
+    defineField({
+      name: 'blocks',
+      title: 'Page sections',
+      type: 'array',
+      // @ts-expect-error Sanity supports dynamic `of` by document; types lag behind runtime
+      of: ({ document }: { document?: { slug?: string } }) => getPageBlockMembers(document?.slug),
+      description:
+        'Block picker is filtered by page slug. Set slug (home / about-us / projects / contact) before adding sections.',
+      validation: (Rule) =>
+        Rule.custom((blocks, context) => {
+          const slug = (context.document as { slug?: string } | undefined)?.slug
+          if (!slug || !Array.isArray(blocks)) return true
+          const allowed = new Set(getPageBlockMembers(slug).map((m) => m.type))
+          const invalid = (blocks as { _type?: string }[])
+            .map((b) => b._type)
+            .filter((t): t is string => !!t && !allowed.has(t))
+          if (invalid.length === 0) return true
+          return `Block type(s) not allowed on "${slug}": ${[...new Set(invalid)].join(', ')}`
+        }),
+      options: { insertMenu: { filter: true } },
+    }),
     defineField({ name: 'seoTitle', type: 'localeString' }),
     defineField({ name: 'seoDescription', type: 'localeText' }),
     seoImageField,

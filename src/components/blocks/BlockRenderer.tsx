@@ -13,6 +13,8 @@ import ContactFormBlockComponent from './ContactFormBlock'
 import MissionVisionBlockComponent from './MissionVisionBlock'
 import WhyMKNBlockComponent from './WhyMKNBlock'
 import ChairmanMessageBlockComponent from './ChairmanMessageBlock'
+import ContactInfoBlockComponent from './ContactInfoBlock'
+import ProjectShowcaseBlockComponent from './ProjectShowcaseBlock'
 import UnitsBlockComponent from './UnitsBlock'
 import MapBlockComponent from './MapBlock'
 
@@ -29,6 +31,8 @@ const blockComponents: Record<string, React.ComponentType<any>> = {
   aboutSnippet: AboutSnippetBlockComponent,
   projectsGrid: ProjectsGridBlockComponent,
   contactForm: ContactFormBlockComponent,
+  contactInfo: ContactInfoBlockComponent,
+  projectShowcase: ProjectShowcaseBlockComponent,
   missionVision: MissionVisionBlockComponent,
   whyMKN: WhyMKNBlockComponent,
   chairmanMessage: ChairmanMessageBlockComponent,
