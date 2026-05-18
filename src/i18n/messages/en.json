@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "ourProjects": "Our Projects",
+    "contactUs": "Contact Us",
+    "language": "EN",
+    "switchTo": "AR"
+  },
+  "footer": {
+    "getInTouch": "Get In Touch",
+    "headOffice": "Head Office",
+    "quickLinks": "Quick Links",
+    "socialMedia": "Social Media",
+    "getDirections": "GET DIRECTION",
+    "allRights": "All rights reserved."
+  },
+  "home": {
+    "discoverAll": "DISCOVER ALL",
+    "ourProjects": "PROJECTS",
+    "watchReel": "WATCH OUR PROJECT SHOWCASE"
+  },
+  "projects": {
+    "showProject": "SHOW PROJECT",
+    "discoverAll": "DISCOVER ALL PROJECTS",
+    "portfolio": "YOUR PORTFOLIO",
+    "tagline": "PROJECTS THAT DEFINE MODERN LIVING",
+    "pageSubtitle": "A growing portfolio of developments across prime locations.",
+    "explore": "Explore a diverse collection of residential developments designed with modern architecture, smart planning, and strategic locations.",
+    "notFound": "Project not found."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Leave us a little info, and we'll be in touch.",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Reason for Visit",
+      "chooseSubject": "Choose a subject",
+      "project": "Choose Project (URL)",
+      "budget": "Choose a range (SAR)",
+      "message": "Message",
+      "consent": "By clicking, Agree I agree with Terms & Conditions and Privacy Policy",
+      "submit": "GET A QUOTE",
+      "successTitle": "Thank you!",
+      "successMessage": "Your inquiry has been received. We will contact you soon."
+    },
+    "joinTeam": "Join the MKN Team.",
+    "downloadCareers": "DOWNLOAD CAREERS"
+  },
+  "about": {
+    "title": "About Us",
+    "whoWeAre": "WHO WE ARE",
+    "ourNumbers": "OUR NUMBERS",
+    "ourMission": "OUR MISSION",
+    "ourVision": "OUR VISION",
+    "ourValues": "OUR VALUES",
+    "whyMKN": "WHY MKN"
+  },
+  "common": {
+    "learnMore": "LEARN MORE",
+    "contactUs": "CONTACT US",
+    "ourServices": "OUR SERVICES",
+    "dropUsLine": "DROP US A LINE",
+    "viewAll": "VIEW ALL",
+    "close": "Close menu"
+  }
+}

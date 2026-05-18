@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "aboutUs": "من نحن",
+    "ourProjects": "مشاريعنا",
+    "contactUs": "تواصل معنا",
+    "language": "AR",
+    "switchTo": "EN"
+  },
+  "footer": {
+    "getInTouch": "تواصل معنا",
+    "headOffice": "المقر الرئيسي",
+    "quickLinks": "روابط سريعة",
+    "socialMedia": "وسائل التواصل",
+    "getDirections": "احصل على الاتجاهات",
+    "allRights": "جميع الحقوق محفوظة."
+  },
+  "home": {
+    "discoverAll": "اكتشف الكل",
+    "ourProjects": "المشاريع",
+    "watchReel": "شاهد معرض المشاريع"
+  },
+  "projects": {
+    "showProject": "عرض المشروع",
+    "discoverAll": "اكتشف جميع المشاريع",
+    "portfolio": "محفظتنا",
+    "tagline": "مشاريع تُعيد تعريف المعيشة العصرية",
+    "pageSubtitle": "محفظة متنامية من المشاريع في أبرز المواقع.",
+    "explore": "استكشف مجموعة متنوعة من المشاريع السكنية المصممة بأحدث المعايير المعمارية.",
+    "notFound": "المشروع غير موجود."
+  },
+  "contact": {
+    "title": "تواصل معنا",
+    "subtitle": "أرسل لنا رسالة وسنتواصل معك قريبًا.",
+    "form": {
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "subject": "موضوع الاستفسار",
+      "chooseSubject": "اختر الموضوع",
+      "project": "اختر المشروع",
+      "budget": "الميزانية التقريبية",
+      "message": "رسالتك",
+      "consent": "بالنقر، أوافق على الشروط والأحكام وسياسة الخصوصية",
+      "submit": "احصل على عرض سعر",
+      "successTitle": "شكراً لك!",
+      "successMessage": "تم استلام استفسارك وسنتواصل معك قريبًا."
+    },
+    "joinTeam": "انضم إلى فريق MKN",
+    "downloadCareers": "تنزيل الوظائف"
+  },
+  "about": {
+    "title": "من نحن",
+    "whoWeAre": "من نحن",
+    "ourNumbers": "أرقامنا",
+    "ourMission": "رسالتنا",
+    "ourVision": "رؤيتنا",
+    "ourValues": "قيمنا",
+    "whyMKN": "لماذا MKN"
+  },
+  "common": {
+    "learnMore": "اعرف أكثر",
+    "contactUs": "تواصل معنا",
+    "ourServices": "خدماتنا",
+    "dropUsLine": "أرسل لنا رسالة",
+    "viewAll": "عرض الكل",
+    "close": "إغلاق القائمة"
+  }
+}

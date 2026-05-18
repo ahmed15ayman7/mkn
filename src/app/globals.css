@@ -1,0 +1,144 @@
+/* Google Fonts — must be first */
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-navy: #0c2d4a;
+  --color-teal: #0d3d54;
+  --color-teal-light: #1a5a74;
+  --color-tan: #c4a578;
+  --color-tan-dark: #9a7a4e;
+  --color-sage: #8a9870;
+  --color-sage-dark: #6a7a52;
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-light: #2a2a2a;
+  --color-ivory: #f5f0e8;
+  --color-ivory-dark: #e8e0d0;
+  --color-gold: #b5935a;
+
+  /* Typography */
+  --font-display: "Anton", "Impact", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* Spacing scale additions */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-30: 7.5rem;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: theme(colors.charcoal / 15%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #fff;
+    color: var(--color-charcoal);
+    overflow-x: hidden;
+  }
+
+  /* RTL support */
+  [dir="rtl"] {
+    font-family: "Cairo", var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  /* Remove scrollbar flash on modals */
+  html.modal-open {
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Marquee animation */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  /* Fade in on scroll */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.7s ease forwards;
+  }
+
+  /* Overlay gradient */
+  .gradient-overlay {
+    background: linear-gradient(to bottom, transparent 20%, rgba(12, 45, 74, 0.7) 100%);
+  }
+
+  .gradient-overlay-strong {
+    background: linear-gradient(
+      135deg,
+      rgba(12, 45, 74, 0.85) 0%,
+      rgba(12, 45, 74, 0.4) 60%,
+      transparent 100%
+    );
+  }
+
+  /* Number counter section grid line */
+  .section-number {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--color-tan);
+  }
+}
+
+/* Payload admin overrides — keep minimal */
+.payload-admin {
+  --theme-elevation-0: var(--color-charcoal);
+}
